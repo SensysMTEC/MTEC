@@ -1149,15 +1149,14 @@ if __name__ =='__main__':
 	
 	# The following parameters can be used to tune the simulation
 	random.seed(0)
-	ntbd = 600							#network bandwidth
-	app_inst_time = 250				#the period of time that application instances might arrive
-	sim_time = 20000					#simulation period
-	num_arrivals = 100					#number of application instances arrived during app_ins_time	
-	pF_thrs = args.pf					#probability of failure threshold
-	num_rep = args.rd					#maximum number of replication allowed
-	weight_alpha = args.jp 					#use this to control the joint optimization parameter alpha
+	app_inst_time = 250					# the period of time that application instances might arrive
+	sim_time = 20000					# simulation period
+	num_arrivals = 100					# number of application instances arrived during app_ins_time	
+	pF_thrs = args.pf					# probability of failure threshold
+	num_rep = args.rd					# maximum number of replication allowed
+	weight_alpha = args.jp 					# use this to control the joint optimization parameter alpha
 	weight_beta  = args.bt
-	num_edge_max = 14					#number of edge devices in DAG
+	num_edge_max = 14					# number of edge devices in DAG
 	global_var.transmission_err_prov = 1.5
 
 	dcc_cluster_num=3
@@ -1165,24 +1164,23 @@ if __name__ =='__main__':
 	simulation = 0
 
 	access_dict={}
-	access_dict[0]="128.46.74.171" #nx1
-	access_dict[1]="128.46.74.172" #nx2
-	access_dict[2]="128.46.74.173" #nx3
-	access_dict[3]="128.46.74.95"  #agx
-	access_dict[4]="128.46.73.218" #ashraf server
-	access_dict[5]="128.46.74.198" #nx3
-	access_dict[6]="128.46.74.176" #nx3
-	access_dict[7]="128.46.74.197" #nx3
-	access_dict[8]="128.46.74.170" #nx3
-	access_dict[9]="128.46.74.199" #nx3
-	access_dict[10]="128.46.74.174" #nx3
-	access_dict[11]="128.46.74.191" #nx3
-	access_dict[12]="128.46.74.177" #nx3
-	access_dict[13]="128.46.74.82" #nx3
-	#access_dict[4]="72.12.208.246" #orchestrator
-	#access_dict[5]="72.12.208.247"
-	#access_dict[6]="72.12.208.245"
-	access_dict[14]="128.46.73.218" #xiang system
+	access_dict[0]="128.46.xx.xx"
+	access_dict[1]="128.46.xx.xx"
+	access_dict[2]="128.46.xx.xx" 
+	access_dict[3]="128.46.xx.xx" 
+	access_dict[4]="128.46.xx.xx" 
+	access_dict[5]="128.46.xx.xx" 
+	access_dict[6]="128.46.xx.xx"
+	access_dict[7]="128.46.xx.xx" 
+	access_dict[8]="128.46.xx.xx" 
+	access_dict[9]="128.46.xx.xx" 
+	
+	access_dict[10]="128.46.xx.xx" 
+	access_dict[11]="128.46.xx.xx" 
+	access_dict[12]="128.46.xx.xx"
+	access_dict[13]="128.46.xx.xx" 
+	access_dict[14]="128.46.xx.xx" 
+	
 	global_var.device_list=[]
 	global_var.socket_list = []
 	global_var.IDENTIFIER = num_edge_max
@@ -1270,8 +1268,6 @@ if __name__ =='__main__':
 		lam2 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 		#lam2=[0.0015, 0.0011, 0.0015, 0.0024, 0.00009, 0.0022, 0.001, 0.0012, 0.00015, 0.0041, 0.0015, 0.0013, 0.0012,0.001, 0.0016]   									#sweep
 		#lam2=[0.000015, 0.000011, 0.000015, 0.000011, 0.000018, 0.000012, 0.00001, 0.00002]   
-		# 							#CED
-		#lam2=[0.0015, 0.011, 0.0015, 0.024, 0.000000009, 0.0032, 0.001, 0.0012, 0.015, 0.0011, 0.015, 0.001, 0.012,0.001, 0.0012]   # lots of clients and soem stable edge / cloud server, this is used for pf and cost sweep
 
 		# use the follwing loop to update the failure rate for each devive
 	#	for i in range(num_edge):
@@ -1313,10 +1309,3 @@ if __name__ =='__main__':
 			time_x_lats, average_service_time_lats, service_time_x_lats, pf_lats_av,load_ed_lats=run_lats(task_time,num_edge,task_types,vert_stage,ED_m,ED_c,task_dict,dependency_dic,pf_ed,pf_ed_tk, task_file_dic,app_directory,inputfile_dic, global_var.socket_list, ed_cpu_regression,ed_latency_regression,output_lookup)
 		if args.sch == "dcc":
 			time_x_lats, average_service_time_lats, service_time_x_lats, pf_lats_av,load_ed_lats=run_dcc(task_time,num_edge,task_types,vert_stage,ED_m,ED_c,task_dict,dependency_dic,pf_ed,pf_ed_tk, task_file_dic,app_directory,inputfile_dic, global_var.socket_list,task_class_dict, cluster_dic, dcc_cluster_num, output_lookup)
-
-		#print(f"service time mtec: {average_service_time_mtec}")
-		#print(f"service time petrel: {average_service_time_petrel}")
-		#print(f"service time lavea: {average_service_time_lavea}")
-		#print(f"service time rr: {average_service_time_rr}")
-		#print(f"service time rd: {average_service_time_rd}")
-		#print(f"service time lats: {average_service_time_lats}")
